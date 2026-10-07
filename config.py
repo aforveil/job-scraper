@@ -37,9 +37,10 @@ LINKEDIN_SEARCH_QUERIES = [
     "alternance export"
 ]
 LINKEDIN_LOCATION = "Grand Est, France"
-LINKEDIN_GEO_ID = 105015875  # Code France globale pour éviter d'être trop bridé
-LINKEDIN_JOB_TYPE = ""        # Laisse vide pour chopper à la fois les offres taguées stage, temps plein ou alternance
-LINKEDIN_JOB_POSTING_DATE = "r604800"  # r604800 = annonces des 7 derniers jours (au lieu de 24h)
+LINKEDIN_GEO_ID = 105015875
+LINKEDIN_JOB_TYPE = ""
+LINKEDIN_JOB_POSTING_DATE = "r604800"
+LINKEDIN_F_WT = ""  # Laisse vide pour ratisser présentiel, hybride et remote sans filtrer
 
 # --- Processing Limits ---
 SCRAPING_SOURCES = ["linkedin"] # "linkedin", "careers_future"
