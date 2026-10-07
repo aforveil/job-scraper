@@ -31,23 +31,39 @@ LLM_MODEL = "gemini"
 
 # --- LinkedIn Search Configuration ---
 LINKEDIN_SEARCH_QUERIES = [
-    "alternance developpement commercial",
+    # 1. Les cibles directes Sales / B2B
+    "alternance commercial",
     "alternance business developer",
+    "alternance developpement commercial",
     "alternance commercial b2b",
-    "alternance export"
+    
+    # 2. Les intitulés PME & Industrie très fréquents dans le 54 (Toul, Pompey, Lunéville)
+    "alternance charge d affaires",
+    "alternance technico commercial",
+    "alternance assistant commercial",
+    "alternance export",
+    
+    # 3. Le mot-clé pour chopper les offres rédigées par des RH à l'ancienne
+    "apprentissage commercial"
 ]
-LINKEDIN_LOCATION = "Grand Est, France"
-LINKEDIN_GEO_ID = 105015875
-LINKEDIN_JOB_TYPE = ""
-LINKEDIN_JOB_POSTING_DATE = "r604800"
-LINKEDIN_F_WT = ""  # Laisse vide pour ratisser présentiel, hybride et remote sans filtrer
+
+LINKEDIN_LOCATION = "Nancy, Grand Est, France"
+LINKEDIN_GEO_ID = ""           # Laissé vide exprès : LinkedIn prend Nancy et applique son rayon auto de 40 km
+LINKEDIN_JOB_TYPE = ""         # Laisse vide : prend apprentissage, pro, stage, temps plein
+LINKEDIN_JOB_POSTING_DATE = "r604800"  # Offres des 7 derniers jours (la fraîcheur absolue)
+LINKEDIN_F_WT = ""             # Présentiel, hybride et remote acceptés
+
 
 # --- Processing Limits ---
-SCRAPING_SOURCES = ["linkedin"] # "linkedin", "careers_future"
-JOBS_TO_SCORE_PER_RUN = 5
+SCRAPING_SOURCES = ["linkedin"]
+
+# On débride le scoring pour que l'IA note un gros paquet d'offres par passage
+JOBS_TO_SCORE_PER_RUN = 25
 JOBS_TO_CUSTOMIZE_PER_RUN = 1
+
+# C'EST ICI LE DÉBRIDAGE : on passe de 2 à 10 offres traitées par mot-clé
 MAX_JOBS_PER_SEARCH = {
-    "linkedin": 2,
+    "linkedin": 10,
     "careers_future": 10,
 }
 
